@@ -8,19 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		2B05D7072BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05D7062BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift */; };
-		2B05D7092BEA9813003B6EC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05D7082BEA9813003B6EC0 /* ContentView.swift */; };
+		2B05D7092BEA9813003B6EC0 /* ArtsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05D7082BEA9813003B6EC0 /* ArtsView.swift */; };
 		2B05D70B2BEA9813003B6EC0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05D70A2BEA9813003B6EC0 /* Item.swift */; };
 		2B05D70D2BEA9814003B6EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B05D70C2BEA9814003B6EC0 /* Assets.xcassets */; };
 		2B05D7102BEA9814003B6EC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B05D70F2BEA9814003B6EC0 /* Preview Assets.xcassets */; };
+		2B05D71A2BEA9859003B6EC0 /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05D7192BEA9859003B6EC0 /* REST.swift */; };
+		2B05D71C2BEA991E003B6EC0 /* ArtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B05D71B2BEA991E003B6EC0 /* ArtService.swift */; };
+		2B2387302BEB2402003FDA5C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23872F2BEB2402003FDA5C /* Model.swift */; };
+		2B2387332BEC00CA003FDA5C /* artworks.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387322BEC00CA003FDA5C /* artworks.json */; };
+		2B2387352BEC012C003FDA5C /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387342BEC012C003FDA5C /* Resources.swift */; };
+		2B2387372BEC250D003FDA5C /* ArtEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */; };
+		2B2387392BEC3274003FDA5C /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387382BEC3274003FDA5C /* Print.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2B05D7032BEA9813003B6EC0 /* ChicagoInstituteArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChicagoInstituteArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B05D7062BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChicagoInstituteArtApp.swift; sourceTree = "<group>"; };
-		2B05D7082BEA9813003B6EC0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2B05D7082BEA9813003B6EC0 /* ArtsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtsView.swift; sourceTree = "<group>"; };
 		2B05D70A2BEA9813003B6EC0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2B05D70C2BEA9814003B6EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B05D70F2BEA9814003B6EC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		2B05D7192BEA9859003B6EC0 /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
+		2B05D71B2BEA991E003B6EC0 /* ArtService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtService.swift; sourceTree = "<group>"; };
+		2B23872F2BEB2402003FDA5C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2B2387322BEC00CA003FDA5C /* artworks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = artworks.json; sourceTree = "<group>"; };
+		2B2387342BEC012C003FDA5C /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtEndpoint.swift; sourceTree = "<group>"; };
+		2B2387382BEC3274003FDA5C /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +67,11 @@
 		2B05D7052BEA9813003B6EC0 /* ChicagoInstituteArt */ = {
 			isa = PBXGroup;
 			children = (
+				2B05D7182BEA983D003B6EC0 /* Application */,
+				2B05D7172BEA9838003B6EC0 /* Domain */,
+				2B05D7162BEA982E003B6EC0 /* Library */,
+				2B2387312BEC0096003FDA5C /* Resources */,
 				2B05D7062BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift */,
-				2B05D7082BEA9813003B6EC0 /* ContentView.swift */,
 				2B05D70A2BEA9813003B6EC0 /* Item.swift */,
 				2B05D70C2BEA9814003B6EC0 /* Assets.xcassets */,
 				2B05D70E2BEA9814003B6EC0 /* Preview Content */,
@@ -68,6 +85,42 @@
 				2B05D70F2BEA9814003B6EC0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2B05D7162BEA982E003B6EC0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				2B05D7192BEA9859003B6EC0 /* REST.swift */,
+				2B2387342BEC012C003FDA5C /* Resources.swift */,
+				2B2387382BEC3274003FDA5C /* Print.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		2B05D7172BEA9838003B6EC0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				2B05D71B2BEA991E003B6EC0 /* ArtService.swift */,
+				2B23872F2BEB2402003FDA5C /* Model.swift */,
+				2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		2B05D7182BEA983D003B6EC0 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				2B05D7082BEA9813003B6EC0 /* ArtsView.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		2B2387312BEC0096003FDA5C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2B2387322BEC00CA003FDA5C /* artworks.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +183,7 @@
 			files = (
 				2B05D7102BEA9814003B6EC0 /* Preview Assets.xcassets in Resources */,
 				2B05D70D2BEA9814003B6EC0 /* Assets.xcassets in Resources */,
+				2B2387332BEC00CA003FDA5C /* artworks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,9 +194,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B05D7092BEA9813003B6EC0 /* ContentView.swift in Sources */,
+				2B05D7092BEA9813003B6EC0 /* ArtsView.swift in Sources */,
 				2B05D70B2BEA9813003B6EC0 /* Item.swift in Sources */,
+				2B2387352BEC012C003FDA5C /* Resources.swift in Sources */,
 				2B05D7072BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift in Sources */,
+				2B2387372BEC250D003FDA5C /* ArtEndpoint.swift in Sources */,
+				2B2387302BEB2402003FDA5C /* Model.swift in Sources */,
+				2B05D71A2BEA9859003B6EC0 /* REST.swift in Sources */,
+				2B2387392BEC3274003FDA5C /* Print.swift in Sources */,
+				2B05D71C2BEA991E003B6EC0 /* ArtService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

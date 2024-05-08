@@ -25,7 +25,9 @@ struct ChicagoInstituteArtApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ArtsView(
+                service: ArtService(client: .init())
+            )
         }
         .modelContainer(sharedModelContainer)
     }
