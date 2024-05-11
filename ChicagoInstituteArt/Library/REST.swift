@@ -34,6 +34,7 @@ enum REST {
         var body: Data? { get }
         var queryParameters: [String: String]? { get }
         
+        func createURL() throws -> URL
         func createRequest() throws -> URLRequest
     }
     
@@ -81,17 +82,37 @@ extension URLResponse {
     }
 }
 
+extension URL {
+    var rfc1808Host: String? {
+        guard let scheme = scheme, let host = host(percentEncoded: false) else { return nil }
+        return "\(scheme)://\(host)"
+    }
+    
+    var rfc1808BasedPath: String? {
+        guard let hostPart = rfc1808Host else { return nil }
+        return absoluteString.replacingOccurrences(of: hostPart, with: "")
+    }
+}
+
 extension REST.Endpoint {
     var body: Data? { nil }
     var queryParameters: [String: String]? { nil }
     
-    func createRequest() throws -> URLRequest {
+    func createURL() throws -> URL {
         var urlComponents = URLComponents(string: baseUrl)
         urlComponents?.path = route
         urlComponents?.queryItems = queryParameters?.map(URLQueryItem.from)
         
-        guard let url = urlComponents?.url else { throw REST.EndpointError.malformedUrl }
-        var request = URLRequest(url: url)
+        guard let url = urlComponents?.url else {
+            throw REST.EndpointError.malformedUrl
+        }
+        
+        print("Generated URL: \(url)")
+        return url
+    }
+    
+    func createRequest() throws -> URLRequest {
+        var request = URLRequest(url: try createURL())
         request.httpMethod = method.spelled
         request.httpBody = body
         

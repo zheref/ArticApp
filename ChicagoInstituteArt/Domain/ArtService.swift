@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ArtServiceProtocol {
-    func fetchArtworks(page: Int) async throws -> [ArtworksItem]
+    func fetchArtworks(page: Int) async throws -> (items: [ArtworksItem], iiifUrl: URL?)
 }
 
 struct ArtService: ArtServiceProtocol {
@@ -18,12 +18,12 @@ struct ArtService: ArtServiceProtocol {
         self.client = client
     }
     
-    func fetchArtworks(page: Int) async throws -> [ArtworksItem] {
+    func fetchArtworks(page: Int) async throws -> (items: [ArtworksItem], iiifUrl: URL?) {
         print("Fetching artworks for page: \(page)")
         let response: ArtworksResponseBody = try await client.request(
             fromEndpoint: ArtEndpoint.artworks(page: page)
         )
-        return response.data
+        return (items: response.data, iiifUrl: response.config.iiifUrl)
     }
 }
 

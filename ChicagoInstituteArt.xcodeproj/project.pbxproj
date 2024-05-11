@@ -19,7 +19,22 @@
 		2B2387352BEC012C003FDA5C /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387342BEC012C003FDA5C /* Resources.swift */; };
 		2B2387372BEC250D003FDA5C /* ArtEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */; };
 		2B2387392BEC3274003FDA5C /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387382BEC3274003FDA5C /* Print.swift */; };
+		2B23873B2BEC390C003FDA5C /* Serialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23873A2BEC390C003FDA5C /* Serialization.swift */; };
+		2B23873D2BEC3D38003FDA5C /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23873C2BEC3D38003FDA5C /* UIKitExtensions.swift */; };
+		2B23873F2BEEED5D003FDA5C /* ImagesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23873E2BEEED5D003FDA5C /* ImagesEndpoint.swift */; };
+		2B2387472BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387462BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift */; };
+		2B23874F2BEFD1FB003FDA5C /* RESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23874E2BEFD1FB003FDA5C /* RESTTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2B2387482BEFD1DD003FDA5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2B05D6FB2BEA9813003B6EC0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2B05D7022BEA9813003B6EC0;
+			remoteInfo = ChicagoInstituteArt;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2B05D7032BEA9813003B6EC0 /* ChicagoInstituteArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChicagoInstituteArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,10 +50,23 @@
 		2B2387342BEC012C003FDA5C /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtEndpoint.swift; sourceTree = "<group>"; };
 		2B2387382BEC3274003FDA5C /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
+		2B23873A2BEC390C003FDA5C /* Serialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serialization.swift; sourceTree = "<group>"; };
+		2B23873C2BEC3D38003FDA5C /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
+		2B23873E2BEEED5D003FDA5C /* ImagesEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesEndpoint.swift; sourceTree = "<group>"; };
+		2B2387442BEFD1DD003FDA5C /* ChicagoInstituteArtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChicagoInstituteArtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B2387462BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChicagoInstituteArtTests.swift; sourceTree = "<group>"; };
+		2B23874E2BEFD1FB003FDA5C /* RESTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2B05D7002BEA9813003B6EC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B2387412BEFD1DD003FDA5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -52,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				2B05D7052BEA9813003B6EC0 /* ChicagoInstituteArt */,
+				2B2387452BEFD1DD003FDA5C /* ChicagoInstituteArtTests */,
 				2B05D7042BEA9813003B6EC0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				2B05D7032BEA9813003B6EC0 /* ChicagoInstituteArt.app */,
+				2B2387442BEFD1DD003FDA5C /* ChicagoInstituteArtTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +123,8 @@
 				2B05D7192BEA9859003B6EC0 /* REST.swift */,
 				2B2387342BEC012C003FDA5C /* Resources.swift */,
 				2B2387382BEC3274003FDA5C /* Print.swift */,
+				2B23873A2BEC390C003FDA5C /* Serialization.swift */,
+				2B23873C2BEC3D38003FDA5C /* UIKitExtensions.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -103,6 +135,7 @@
 				2B05D71B2BEA991E003B6EC0 /* ArtService.swift */,
 				2B23872F2BEB2402003FDA5C /* Model.swift */,
 				2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */,
+				2B23873E2BEEED5D003FDA5C /* ImagesEndpoint.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -121,6 +154,23 @@
 				2B2387322BEC00CA003FDA5C /* artworks.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2B2387452BEFD1DD003FDA5C /* ChicagoInstituteArtTests */ = {
+			isa = PBXGroup;
+			children = (
+				2B2387462BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift */,
+				2B23874D2BEFD1EC003FDA5C /* Library */,
+			);
+			path = ChicagoInstituteArtTests;
+			sourceTree = "<group>";
+		};
+		2B23874D2BEFD1EC003FDA5C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				2B23874E2BEFD1FB003FDA5C /* RESTTests.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +193,24 @@
 			productReference = 2B05D7032BEA9813003B6EC0 /* ChicagoInstituteArt.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2B2387432BEFD1DD003FDA5C /* ChicagoInstituteArtTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B23874A2BEFD1DD003FDA5C /* Build configuration list for PBXNativeTarget "ChicagoInstituteArtTests" */;
+			buildPhases = (
+				2B2387402BEFD1DD003FDA5C /* Sources */,
+				2B2387412BEFD1DD003FDA5C /* Frameworks */,
+				2B2387422BEFD1DD003FDA5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B2387492BEFD1DD003FDA5C /* PBXTargetDependency */,
+			);
+			name = ChicagoInstituteArtTests;
+			productName = ChicagoInstituteArtTests;
+			productReference = 2B2387442BEFD1DD003FDA5C /* ChicagoInstituteArtTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -155,6 +223,10 @@
 				TargetAttributes = {
 					2B05D7022BEA9813003B6EC0 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					2B2387432BEFD1DD003FDA5C = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 2B05D7022BEA9813003B6EC0;
 					};
 				};
 			};
@@ -172,6 +244,7 @@
 			projectRoot = "";
 			targets = (
 				2B05D7022BEA9813003B6EC0 /* ChicagoInstituteArt */,
+				2B2387432BEFD1DD003FDA5C /* ChicagoInstituteArtTests */,
 			);
 		};
 /* End PBXProject section */
@@ -187,6 +260,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2B2387422BEFD1DD003FDA5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -196,17 +276,37 @@
 			files = (
 				2B05D7092BEA9813003B6EC0 /* ArtsView.swift in Sources */,
 				2B05D70B2BEA9813003B6EC0 /* Item.swift in Sources */,
+				2B23873F2BEEED5D003FDA5C /* ImagesEndpoint.swift in Sources */,
 				2B2387352BEC012C003FDA5C /* Resources.swift in Sources */,
 				2B05D7072BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift in Sources */,
 				2B2387372BEC250D003FDA5C /* ArtEndpoint.swift in Sources */,
 				2B2387302BEB2402003FDA5C /* Model.swift in Sources */,
 				2B05D71A2BEA9859003B6EC0 /* REST.swift in Sources */,
 				2B2387392BEC3274003FDA5C /* Print.swift in Sources */,
+				2B23873B2BEC390C003FDA5C /* Serialization.swift in Sources */,
+				2B23873D2BEC3D38003FDA5C /* UIKitExtensions.swift in Sources */,
 				2B05D71C2BEA991E003B6EC0 /* ArtService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2B2387402BEFD1DD003FDA5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B2387472BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift in Sources */,
+				2B23874F2BEFD1FB003FDA5C /* RESTTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2B2387492BEFD1DD003FDA5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2B05D7022BEA9813003B6EC0 /* ChicagoInstituteArt */;
+			targetProxy = 2B2387482BEFD1DD003FDA5C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2B05D7112BEA9814003B6EC0 /* Debug */ = {
@@ -386,6 +486,42 @@
 			};
 			name = Release;
 		};
+		2B23874B2BEFD1DD003FDA5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQUE4FE98B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.zheref.ChicagoInstituteArtTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChicagoInstituteArt.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChicagoInstituteArt";
+			};
+			name = Debug;
+		};
+		2B23874C2BEFD1DD003FDA5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AQUE4FE98B;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.zheref.ChicagoInstituteArtTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChicagoInstituteArt.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChicagoInstituteArt";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -403,6 +539,15 @@
 			buildConfigurations = (
 				2B05D7142BEA9814003B6EC0 /* Debug */,
 				2B05D7152BEA9814003B6EC0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B23874A2BEFD1DD003FDA5C /* Build configuration list for PBXNativeTarget "ChicagoInstituteArtTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B23874B2BEFD1DD003FDA5C /* Debug */,
+				2B23874C2BEFD1DD003FDA5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

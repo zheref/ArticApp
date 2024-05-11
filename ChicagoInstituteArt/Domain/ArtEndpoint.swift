@@ -7,13 +7,11 @@
 
 import Foundation
 
-extension REST.Endpoint {
-    var baseUrl: String { "https://api.artic.edu" }
-}
-
 enum ArtEndpoint: REST.Endpoint {
     case artworks(page: Int)
     case artwork(artId: String)
+    
+    var baseUrl: String { "https://api.artic.edu" }
     
     var route: String {
         let versionPath = "/api/v1"
@@ -42,7 +40,7 @@ enum ArtEndpoint: REST.Endpoint {
             return [
                 "page": "\(page)",
                 "limit": "10",
-                "fields": "id,title,thumbnail,dimensions,artist_title,artist_display,date_display,main_reference_number,theme_titles"
+                "fields": "id,title,thumbnail,dimensions,artist_title,artist_display,date_display,main_reference_number,theme_titles,image_id"
             ]
         default:
             return nil

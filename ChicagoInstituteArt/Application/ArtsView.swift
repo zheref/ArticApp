@@ -12,6 +12,7 @@ struct ArtsView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     @State private var artItems = [ArtworksItem]()
+    @State private var iiifUrl: URL?
     @State private var lastFetchedPage = 0
     
     let service: ArtServiceProtocol
@@ -19,22 +20,37 @@ struct ArtsView: View {
     init(service: ArtServiceProtocol) {
         self.service = service
     }
+    
+    private func url(for item: ArtworksItem) -> URL? {
+        guard let iiifUrl = iiifUrl else { return nil }
+        let endpoint = ImagesEndpoint.image(iiifUrl: iiifUrl, imageId: item.imageId)
+        return try? endpoint.createURL()
+    }
 
     var body: some View {
         NavigationSplitView {
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-//                    } label: {
-//                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
             List {
                 ForEach(artItems) { item in
-                    Text(item.title)
+                    NavigationLink {
+                        HStack {
+                            AsyncImage(url: url(for: item)) {
+                                $0.image?.resizable()
+                            }
+                            Text("Item at \(item.title)")
+                        }
+                    } label: {
+                        HStack {
+                            if let imageString = item.thumbnail?.lqip,
+                                let image = UIImage.fromBase64Uri(string: imageString) {
+                                AsyncImage(url: url(for: item)) {
+                                    $0.image?
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                }
+                            }
+                            Text(item.title)
+                        }
+                    }
                 }
             }
             .toolbar {
@@ -52,7 +68,7 @@ struct ArtsView: View {
         }
         .task {
             do {
-                artItems = try await service.fetchArtworks(page: lastFetchedPage + 1)
+                (artItems, iiifUrl) = try await service.fetchArtworks(page: lastFetchedPage + 1)
                 lastFetchedPage += 1
             } catch {
                 Print.error(error)
