@@ -62,8 +62,9 @@ final class ArtworksItem: Decodable, Identifiable {
     var dimensions: String?
     var artistTitle: String?
     var themeTitles: [String]
+    var creditLine: String?
     
-    init(id: Int, title: String, thumbnail: ArtworkThumbnail, imageId: String, dimensions: String, artistTitle: String, themeTitles: [String]) {
+    init(id: Int, title: String, thumbnail: ArtworkThumbnail, imageId: String, dimensions: String, artistTitle: String, themeTitles: [String], creditLine: String?) {
         self.id = id
         self.title = title
         self.imageId = imageId
@@ -71,10 +72,11 @@ final class ArtworksItem: Decodable, Identifiable {
         self.dimensions = dimensions
         self.artistTitle = artistTitle
         self.themeTitles = themeTitles
+        self.creditLine = creditLine
     }
     
     enum CodingKeys: CodingKey {
-        case id, title, thumbnail, image_id, dimensions, artist_title, theme_titles
+        case id, title, thumbnail, image_id, dimensions, artist_title, theme_titles, credit_line
     }
     
     init(from decoder: any Decoder) throws {
@@ -86,6 +88,7 @@ final class ArtworksItem: Decodable, Identifiable {
         self.dimensions = try? container.decodeIfPresent(String.self, forKey: .dimensions)
         self.artistTitle = try? container.decodeIfPresent(String.self, forKey: .artist_title)
         self.themeTitles = try container.decodeIfPresent([String].self, forKey: .theme_titles) ?? []
+        self.creditLine = try? container.decodeIfPresent(String.self, forKey: .credit_line)
     }
 }
 
@@ -100,6 +103,12 @@ final class ArtworkThumbnail: Decodable {
         case height
     }
     
+    init(lqip: String? = nil, width: Int, height: Int) {
+        self.lqip = lqip
+        self.width = width
+        self.height = height
+    }
+    
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.lqip = try container.decodeIfPresent(String.self, forKey: .lqip)
@@ -107,3 +116,24 @@ final class ArtworkThumbnail: Decodable {
         self.height = try container.decode(Int.self, forKey: .height)
     }
 }
+
+#if DEBUG
+
+extension ArtworksItem {
+    static var mock: ArtworksItem {
+        .init(id: 1,
+              title: "Interior at Nice",
+              thumbnail: .mock,
+              imageId: "2193cdda-2691-2802-0776-145dee77f7ea",
+              dimensions: "131.5 × 90.7 cm (51 13/16 × 35 11/16 in.)",
+              artistTitle: "Henri Matisse",
+              themeTitles: ["Essentials"],
+              creditLine: "Purchased with funds provided by Mrs. James W. Alsdorf and Mrs. Leonard S. Florsheim, Jr.")
+    }
+}
+
+extension ArtworkThumbnail {
+    static var mock: ArtworkThumbnail { .init(width: 100, height: 100) }
+}
+
+#endif

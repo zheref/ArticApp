@@ -40,7 +40,7 @@ enum ArtEndpoint: REST.Endpoint {
             return [
                 "page": "\(page)",
                 "limit": "10",
-                "fields": "id,title,thumbnail,dimensions,artist_title,artist_display,date_display,main_reference_number,theme_titles,image_id"
+                "fields": "id,title,thumbnail,dimensions,artist_title,artist_display,date_display,main_reference_number,theme_titles,image_id,credit_line"
             ]
         default:
             return nil

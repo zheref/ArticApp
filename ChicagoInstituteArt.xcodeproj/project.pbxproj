@@ -34,6 +34,7 @@
 		2B2387622BEFDAD9003FDA5C /* Spartan-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387592BEFDAD9003FDA5C /* Spartan-Light.ttf */; };
 		2B2387632BEFDAD9003FDA5C /* Spartan-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B23875A2BEFDAD9003FDA5C /* Spartan-ExtraLight.ttf */; };
 		2B2387652BEFE0BD003FDA5C /* Font+Extensions .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387642BEFE0BC003FDA5C /* Font+Extensions .swift */; };
+		2B23876B2BEFE77F003FDA5C /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23876A2BEFE77F003FDA5C /* ArtworkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		2B2387642BEFE0BC003FDA5C /* Font+Extensions .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+Extensions .swift"; sourceTree = "<group>"; };
 		2B2387682BEFE173003FDA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2B2387692BEFE208003FDA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2B23876A2BEFE77F003FDA5C /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				2B05D7082BEA9813003B6EC0 /* ArtsView.swift */,
+				2B23876A2BEFE77F003FDA5C /* ArtworkView.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				2B2387372BEC250D003FDA5C /* ArtEndpoint.swift in Sources */,
 				2B2387302BEB2402003FDA5C /* Model.swift in Sources */,
 				2B05D71A2BEA9859003B6EC0 /* REST.swift in Sources */,
+				2B23876B2BEFE77F003FDA5C /* ArtworkView.swift in Sources */,
 				2B2387392BEC3274003FDA5C /* Print.swift in Sources */,
 				2B23873B2BEC390C003FDA5C /* Serialization.swift in Sources */,
 				2B23873D2BEC3D38003FDA5C /* UIKitExtensions.swift in Sources */,

@@ -37,12 +37,7 @@ struct ArtsView: View {
                 LazyVGrid(columns: adaptiveColumn, spacing: 10, content: {
                     ForEach(artItems) { item in
                         NavigationLink {
-                            VStack {
-                                AsyncImage(url: url(for: item)) {
-                                    $0.image?.resizable()
-                                }
-                                Text("Item at \(item.title)")
-                            }
+                            ArtworkView(item: item, iiifUrl: iiifUrl)
                         } label: {
                             itemCell(forItem: item)
                         }
