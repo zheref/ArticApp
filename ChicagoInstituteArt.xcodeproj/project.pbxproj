@@ -24,6 +24,16 @@
 		2B23873F2BEEED5D003FDA5C /* ImagesEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23873E2BEEED5D003FDA5C /* ImagesEndpoint.swift */; };
 		2B2387472BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387462BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift */; };
 		2B23874F2BEFD1FB003FDA5C /* RESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23874E2BEFD1FB003FDA5C /* RESTTests.swift */; };
+		2B23875B2BEFDAD9003FDA5C /* Spartan-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387522BEFDAD8003FDA5C /* Spartan-Black.ttf */; };
+		2B23875C2BEFDAD9003FDA5C /* Spartan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387532BEFDAD9003FDA5C /* Spartan-Regular.ttf */; };
+		2B23875D2BEFDAD9003FDA5C /* Spartan-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387542BEFDAD9003FDA5C /* Spartan-Thin.ttf */; };
+		2B23875E2BEFDAD9003FDA5C /* Spartan-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387552BEFDAD9003FDA5C /* Spartan-Medium.ttf */; };
+		2B23875F2BEFDAD9003FDA5C /* Spartan-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387562BEFDAD9003FDA5C /* Spartan-Bold.ttf */; };
+		2B2387602BEFDAD9003FDA5C /* Spartan-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387572BEFDAD9003FDA5C /* Spartan-SemiBold.ttf */; };
+		2B2387612BEFDAD9003FDA5C /* Spartan-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387582BEFDAD9003FDA5C /* Spartan-ExtraBold.ttf */; };
+		2B2387622BEFDAD9003FDA5C /* Spartan-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B2387592BEFDAD9003FDA5C /* Spartan-Light.ttf */; };
+		2B2387632BEFDAD9003FDA5C /* Spartan-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B23875A2BEFDAD9003FDA5C /* Spartan-ExtraLight.ttf */; };
+		2B2387652BEFE0BD003FDA5C /* Font+Extensions .swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387642BEFE0BC003FDA5C /* Font+Extensions .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +66,18 @@
 		2B2387442BEFD1DD003FDA5C /* ChicagoInstituteArtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChicagoInstituteArtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B2387462BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChicagoInstituteArtTests.swift; sourceTree = "<group>"; };
 		2B23874E2BEFD1FB003FDA5C /* RESTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTTests.swift; sourceTree = "<group>"; };
+		2B2387522BEFDAD8003FDA5C /* Spartan-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-Black.ttf"; sourceTree = "<group>"; };
+		2B2387532BEFDAD9003FDA5C /* Spartan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-Regular.ttf"; sourceTree = "<group>"; };
+		2B2387542BEFDAD9003FDA5C /* Spartan-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-Thin.ttf"; sourceTree = "<group>"; };
+		2B2387552BEFDAD9003FDA5C /* Spartan-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-Medium.ttf"; sourceTree = "<group>"; };
+		2B2387562BEFDAD9003FDA5C /* Spartan-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-Bold.ttf"; sourceTree = "<group>"; };
+		2B2387572BEFDAD9003FDA5C /* Spartan-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-SemiBold.ttf"; sourceTree = "<group>"; };
+		2B2387582BEFDAD9003FDA5C /* Spartan-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2B2387592BEFDAD9003FDA5C /* Spartan-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-Light.ttf"; sourceTree = "<group>"; };
+		2B23875A2BEFDAD9003FDA5C /* Spartan-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Spartan-ExtraLight.ttf"; sourceTree = "<group>"; };
+		2B2387642BEFE0BC003FDA5C /* Font+Extensions .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Font+Extensions .swift"; sourceTree = "<group>"; };
+		2B2387682BEFE173003FDA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2B2387692BEFE208003FDA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +119,7 @@
 		2B05D7052BEA9813003B6EC0 /* ChicagoInstituteArt */ = {
 			isa = PBXGroup;
 			children = (
+				2B2387692BEFE208003FDA5C /* Info.plist */,
 				2B05D7182BEA983D003B6EC0 /* Application */,
 				2B05D7172BEA9838003B6EC0 /* Domain */,
 				2B05D7162BEA982E003B6EC0 /* Library */,
@@ -151,7 +174,9 @@
 		2B2387312BEC0096003FDA5C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2B2387322BEC00CA003FDA5C /* artworks.json */,
+				2B2387642BEFE0BC003FDA5C /* Font+Extensions .swift */,
+				2B2387512BEFD9B3003FDA5C /* Fonts */,
+				2B2387502BEFD9A5003FDA5C /* Data */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -159,6 +184,7 @@
 		2B2387452BEFD1DD003FDA5C /* ChicagoInstituteArtTests */ = {
 			isa = PBXGroup;
 			children = (
+				2B2387682BEFE173003FDA5C /* Info.plist */,
 				2B2387462BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift */,
 				2B23874D2BEFD1EC003FDA5C /* Library */,
 			);
@@ -171,6 +197,30 @@
 				2B23874E2BEFD1FB003FDA5C /* RESTTests.swift */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		2B2387502BEFD9A5003FDA5C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2B2387322BEC00CA003FDA5C /* artworks.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		2B2387512BEFD9B3003FDA5C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2B2387522BEFDAD8003FDA5C /* Spartan-Black.ttf */,
+				2B2387562BEFDAD9003FDA5C /* Spartan-Bold.ttf */,
+				2B2387582BEFDAD9003FDA5C /* Spartan-ExtraBold.ttf */,
+				2B23875A2BEFDAD9003FDA5C /* Spartan-ExtraLight.ttf */,
+				2B2387592BEFDAD9003FDA5C /* Spartan-Light.ttf */,
+				2B2387552BEFDAD9003FDA5C /* Spartan-Medium.ttf */,
+				2B2387532BEFDAD9003FDA5C /* Spartan-Regular.ttf */,
+				2B2387572BEFDAD9003FDA5C /* Spartan-SemiBold.ttf */,
+				2B2387542BEFDAD9003FDA5C /* Spartan-Thin.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +304,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2387632BEFDAD9003FDA5C /* Spartan-ExtraLight.ttf in Resources */,
+				2B23875B2BEFDAD9003FDA5C /* Spartan-Black.ttf in Resources */,
+				2B2387602BEFDAD9003FDA5C /* Spartan-SemiBold.ttf in Resources */,
+				2B2387622BEFDAD9003FDA5C /* Spartan-Light.ttf in Resources */,
+				2B23875D2BEFDAD9003FDA5C /* Spartan-Thin.ttf in Resources */,
 				2B05D7102BEA9814003B6EC0 /* Preview Assets.xcassets in Resources */,
+				2B23875F2BEFDAD9003FDA5C /* Spartan-Bold.ttf in Resources */,
+				2B23875E2BEFDAD9003FDA5C /* Spartan-Medium.ttf in Resources */,
+				2B2387612BEFDAD9003FDA5C /* Spartan-ExtraBold.ttf in Resources */,
+				2B23875C2BEFDAD9003FDA5C /* Spartan-Regular.ttf in Resources */,
 				2B05D70D2BEA9814003B6EC0 /* Assets.xcassets in Resources */,
 				2B2387332BEC00CA003FDA5C /* artworks.json in Resources */,
 			);
@@ -278,6 +337,7 @@
 				2B05D70B2BEA9813003B6EC0 /* Item.swift in Sources */,
 				2B23873F2BEEED5D003FDA5C /* ImagesEndpoint.swift in Sources */,
 				2B2387352BEC012C003FDA5C /* Resources.swift in Sources */,
+				2B2387652BEFE0BD003FDA5C /* Font+Extensions .swift in Sources */,
 				2B05D7072BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift in Sources */,
 				2B2387372BEC250D003FDA5C /* ArtEndpoint.swift in Sources */,
 				2B2387302BEB2402003FDA5C /* Model.swift in Sources */,
@@ -439,6 +499,7 @@
 				DEVELOPMENT_TEAM = AQUE4FE98B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChicagoInstituteArt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -468,6 +529,7 @@
 				DEVELOPMENT_TEAM = AQUE4FE98B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChicagoInstituteArt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -494,6 +556,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQUE4FE98B;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChicagoInstituteArtTests/Info.plist;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.zheref.ChicagoInstituteArtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -512,6 +575,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AQUE4FE98B;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ChicagoInstituteArtTests/Info.plist;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.zheref.ChicagoInstituteArtTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

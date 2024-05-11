@@ -17,6 +17,10 @@ struct ArtsView: View {
     
     let service: ArtServiceProtocol
     
+    private let adaptiveColumn = [
+        GridItem(.adaptive(minimum: 150))
+    ]
+    
     init(service: ArtServiceProtocol) {
         self.service = service
     }
@@ -29,30 +33,25 @@ struct ArtsView: View {
 
     var body: some View {
         NavigationSplitView {
-            List {
-                ForEach(artItems) { item in
-                    NavigationLink {
-                        HStack {
-                            AsyncImage(url: url(for: item)) {
-                                $0.image?.resizable()
-                            }
-                            Text("Item at \(item.title)")
-                        }
-                    } label: {
-                        HStack {
-                            if let imageString = item.thumbnail?.lqip,
-                                let image = UIImage.fromBase64Uri(string: imageString) {
+            ScrollView {
+                LazyVGrid(columns: adaptiveColumn, spacing: 10, content: {
+                    ForEach(artItems) { item in
+                        NavigationLink {
+                            VStack {
                                 AsyncImage(url: url(for: item)) {
-                                    $0.image?
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
+                                    $0.image?.resizable()
                                 }
+                                Text("Item at \(item.title)")
                             }
-                            Text(item.title)
+                        } label: {
+                            itemCell(forItem: item)
                         }
                     }
-                }
+                })
+                .padding(10)
             }
+            .ignoresSafeArea(.keyboard)
+            .background(Color.background)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -63,17 +62,49 @@ struct ArtsView: View {
                     }
                 }
             }
+            .navigationTitle("Artic Gallery")
         } detail: {
             Text("Select an item")
         }
         .task {
             do {
-                (artItems, iiifUrl) = try await service.fetchArtworks(page: lastFetchedPage + 1)
+                let (artItems, iiifUrl) = try await service.fetchArtworks(page: lastFetchedPage + 1)
+                self.iiifUrl = iiifUrl
+                withAnimation {
+                    for item in artItems {
+                        self.artItems.append(item)
+                    }
+                }
                 lastFetchedPage += 1
             } catch {
                 Print.error(error)
             }
         }
+    }
+    
+    @ViewBuilder
+    private func itemCell(forItem item: ArtworksItem) -> some View {
+        HStack {
+            Spacer()
+            VStack() {
+                Spacer()
+                AsyncImage(url: url(for: item)) {
+                    $0.image?
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+                Spacer(minLength: 10)
+                Text(item.title)
+                    .font(.h4)
+                    .foregroundStyle(Color.black)
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding(5)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 
     private func addItem() {
