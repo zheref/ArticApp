@@ -9,6 +9,8 @@ import Foundation
 import Combine
 
 enum REST {
+    // MARK: - Convenience Types
+    
     enum Method: String {
         case get
         case post
@@ -18,12 +20,6 @@ enum REST {
 
         var spelled: String { rawValue.uppercased() }
     }
-    
-    enum EndpointError: Error {
-        case malformedUrl
-    }
-    
-    enum ClientError: Error {}
     
     protocol Endpoint {
         var baseUrl: String { get }
@@ -40,32 +36,58 @@ enum REST {
     
     typealias URLResponsePair = (data: Data, response: URLResponse)
     typealias URLResponsePublisher = AnyPublisher<URLResponsePair, URLError>
+    
+    // MARK: - Error Types
+    
+    enum EndpointError: Error {
+        case malformedUrl
+    }
+    
+    enum ClientError: Error {}
 
+    // MARK: - Convenience Client
+    
     struct Client {
         var session: URLSession = .shared
+        
+        // MARK: - Actual API performance hooks
         
         var fetchAsync: (URLSession, URLRequest) async throws -> URLResponsePair = { try await $0.data(for: $1) }
         var fetchPublisher: (URLSession, URLRequest) -> URLResponsePublisher = { $0.dataTaskPublisher(for: $1).eraseToAnyPublisher() }
         var fetchWithCompletion: (URLSession, URLRequest, @escaping (Data?, URLResponse?, Error?) -> Void) -> Void = { $0.dataTask(with: $1, completionHandler: $2) }
         
-        func request<Model: Decodable>(fromEndpoint endpoint: Endpoint) async throws -> Model {
+        // MARK: - Concurrency
+        
+        func request<S: Serializer>(fromEndpoint endpoint: Endpoint, 
+                                    using serializer: S) async throws -> S.Model {
             let request = try endpoint.createRequest()
             print("Request: \(String(describing: request.url))")
             let (data, _) = try await fetchAsync(session, request)
-            return try JSONDecoder().decode(Model.self, from: data)
+            return try serializer.decode(data: data)
         }
         
-        func endpoint<Model: Decodable>(_ endpoint: Endpoint) -> AnyPublisher<Model, Error> {
+        func request<Model: Decodable>(fromEndpoint endpoint: Endpoint) async throws -> Model {
+            return try await request(fromEndpoint: endpoint, using: JSONSerializer<Model>())
+        }
+        
+        // MARK: - Combine
+        
+        func endpoint<S: Serializer, M: Decodable>(_ endpoint: Endpoint,
+                                                   using serializer: S)
+        -> AnyPublisher<M, Error> where S.Model == M {
             do {
                 let request = try endpoint.createRequest()
                 return fetchPublisher(session, request)
                     .map(\.data)
-                    .decode(type: Model.self, decoder: JSONDecoder())
+                    .decode(using: serializer)
                     .eraseToAnyPublisher()
             } catch {
-                return Fail<Model, Error>(error: error).eraseToAnyPublisher()
+                return Fail<S.Model, Error>(error: error).eraseToAnyPublisher()
             }
         }
+        
+        func endpoint<M: Decodable>(_ endpoint: Endpoint)
+            -> AnyPublisher<M, Error> { self.endpoint(endpoint, using: JSONSerializer<M>()) }
         
     }
 }

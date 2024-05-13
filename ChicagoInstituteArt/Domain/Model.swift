@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 struct ArtworksResponseBody: Decodable {
     var pagination: ArtworksPagination
@@ -13,7 +14,7 @@ struct ArtworksResponseBody: Decodable {
     var config: ArtworksConfig
 }
 
-final class ArtworksConfig: Decodable {
+struct ArtworksConfig: Decodable {
     var iiifUrl: URL?
     
     enum CodingKeys: CodingKey {
@@ -32,7 +33,6 @@ final class ArtworksPagination: Decodable {
     var limit: Int
     var totalPages: Int
     var currentPage: Int
-//    var isFavorite = false
     
     init(total: Int, limit: Int, totalPages: Int, currentPage: Int) {
         self.total = total
@@ -54,8 +54,9 @@ final class ArtworksPagination: Decodable {
     }
 }
 
+@Model
 final class ArtworksItem: Decodable, Identifiable {
-    var id: Int
+    @Attribute(.unique) var id: Int
     var title: String
     var imageId: String
     var thumbnail: ArtworkThumbnail?
@@ -63,6 +64,7 @@ final class ArtworksItem: Decodable, Identifiable {
     var artistTitle: String?
     var themeTitles: [String]
     var creditLine: String?
+    var isFavorite = false
     
     init(id: Int, title: String, thumbnail: ArtworkThumbnail, imageId: String, dimensions: String, artistTitle: String, themeTitles: [String], creditLine: String?) {
         self.id = id
