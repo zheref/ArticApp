@@ -8,6 +8,16 @@
 import Foundation
 import SwiftData
 
+struct ArtsResult {
+    let items: [ArtworksItem]
+    let maxPagesAvailable: Int?
+    let iiifUrl: URL?
+    
+    static var none: ArtsResult {
+        .init(items: [], maxPagesAvailable: nil, iiifUrl: nil)
+    }
+}
+
 struct ArtworksResponseBody: Decodable {
     var pagination: ArtworksPagination
     var data: [ArtworksItem]

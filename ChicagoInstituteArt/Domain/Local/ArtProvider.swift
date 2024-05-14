@@ -10,9 +10,11 @@ import SwiftData
 
 protocol ArtProviderProtocol {
     func fetchItems(forPage page: Int, countLimit: Int) throws -> [ArtworksItem]
+    func countItems(forPage page: Int, limit: Int) throws -> Int
     var readValue: (String) -> String? { get }
     var storeValue: (String, String) -> Void { get }
-    func store(item: ArtworksItem)
+    func store(item: ArtworksItem, autosaving shouldAutoSave: Bool) throws
+    func commit() throws
 }
 
 struct ArtProvider: ArtProviderProtocol {
@@ -28,7 +30,21 @@ struct ArtProvider: ArtProviderProtocol {
         return try context.fetch(descriptor)
     }
     
-    func store(item: ArtworksItem) {
+    func countItems(forPage page: Int, limit: Int) throws -> Int {
+        var descriptor = FetchDescriptor<ArtworksItem>()
+        descriptor.fetchLimit = limit
+        descriptor.fetchOffset =  limit * (page - 1)
+        return try context.fetchCount(descriptor)
+    }
+    
+    func store(item: ArtworksItem, autosaving shouldAutoSave: Bool = false) throws {
         context.insert(item)
+        if shouldAutoSave {
+            try context.save()
+        }
+    }
+    
+    func commit() throws {
+        try context.save()
     }
 }

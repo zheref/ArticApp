@@ -37,6 +37,9 @@ struct ArtsView: View {
                         } label: {
                             itemCell(forItem: item)
                         }
+                        .onAppear {
+                            interactor.fetchMoreIfNeeded(asItemShows: item)
+                        }
                     }
                 })
                 .padding(10)
@@ -60,8 +63,11 @@ struct ArtsView: View {
             VStack() {
                 Spacer()
                 AsyncImage(url: imageUrl(for: item)) {
-                    $0.image?
-                        .resizable()
+                    $0.resizable()
+                      .frame(width: 120, height: 120)
+                      .clipShape(RoundedRectangle(cornerRadius: 10))
+                } placeholder: {
+                    ProgressView()
                         .frame(width: 120, height: 120)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }

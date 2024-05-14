@@ -11,12 +11,15 @@ import SwiftData
 extension ModelContainer {
     static let modelsForAppContext: [any PersistentModel.Type] = [ArtworksItem.self]
     
+    @MainActor
     static let live: ModelContainer = {
         let schema = Schema(modelsForAppContext)
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            container.mainContext.autosaveEnabled = false
+            return container
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
@@ -39,7 +42,7 @@ actor PreviewSampleData {
         let schema = Schema(ModelContainer.modelsForAppContext)
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         let container = try! ModelContainer(for: schema, configurations: [modelConfiguration])
-        
+        container.mainContext.autosaveEnabled = false
         container.mainContext.insert(ArtworksItem.mock)
 
         return container
@@ -50,7 +53,7 @@ actor PreviewSampleData {
         let schema = Schema(ModelContainer.modelsForAppContext)
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         let container = try! ModelContainer(for: schema, configurations: [modelConfiguration])
-
+        container.mainContext.autosaveEnabled = false
         return container
     }()
 }
