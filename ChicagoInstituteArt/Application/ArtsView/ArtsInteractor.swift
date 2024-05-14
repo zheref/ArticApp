@@ -44,11 +44,12 @@ final class ArtsInteractor {
                 return
             }
             
-            Print.debug("Preloading more items for upcoming pages")
-            retrieve(page: state.lastFetchedPage + 1, upTo: batchLimit) { [weak self] in
+            Print.debug("Preloading more items for upcoming 2 pages")
+            let preloadAdvance = 2
+            download(page: state.lastFetchedPage + 1, upTo: batchLimit * preloadAdvance) { [weak self] in
                 self?.state.iiifUrl = $0.iiifUrl
                 if let maxPagesAvailable = $0.maxPagesAvailable {
-                    self?.state.maxPagesAvailable = maxPagesAvailable
+                    self?.state.maxPagesAvailable = maxPagesAvailable * preloadAdvance
                 }
             }
         } catch {
@@ -65,18 +66,20 @@ final class ArtsInteractor {
                 return
             }
             
+            Print.debug("Fetching page \(targetPage) of \(state.maxPagesAvailable ?? 0)")
+            
             do {
                 let items = try provider.fetchItems(forPage: targetPage, countLimit: batchLimit)
                 if let iiifUrlString = provider.readValue(Self.lastIIIfUrlKey) {
                     let iiifUrl = URL(string: iiifUrlString)
                     
                     if items.isEmpty {
-                        self.retrieve(page: targetPage, upTo: batchLimit) { send(.success($0)) }
+                        self.download(page: targetPage, upTo: batchLimit) { send(.success($0)) }
                     } else {
                         send(.success(.init(items: items, maxPagesAvailable: nil, iiifUrl: iiifUrl)))
                     }
                 } else {
-                    self.retrieve(page: targetPage, upTo: batchLimit) { send(.success($0)) }
+                    self.download(page: targetPage, upTo: batchLimit) { send(.success($0)) }
                 }
             } catch {
                 send(.failure(error))
@@ -84,28 +87,30 @@ final class ArtsInteractor {
         }
     }
     
-    private func retrieve(page: Int, upTo limit: Int, completion: @escaping (ArtsResult) -> Void) {
+    private func download(page: Int, upTo limit: Int, completion: @escaping (ArtsResult) -> Void) {
         Print.debug("Retrieving page \(page) from network")
         Task { [unowned self] in
-            let result = try await self.service.fetchArtworks(page: page, countLimit: limit)
-            if let iiifUrlString = result.iiifUrl?.absoluteString {
-                self.provider.storeValue(Self.lastIIIfUrlKey, iiifUrlString)
-            }
-            await MainActor.run { @Sendable in
-                var validItems = [ArtworksItem]()
-                
-                for item in result.items {
-                    do {
-                        try provider.store(item: item, autosaving: true)
-                        validItems.append(item)
-                    } catch {
-                        Print.error(error)
-                    }
+            do {
+                let result = try await self.service.fetchArtworks(page: page, countLimit: limit)
+                if let iiifUrlString = result.iiifUrl?.absoluteString {
+                    self.provider.storeValue(Self.lastIIIfUrlKey, iiifUrlString)
                 }
-                
-                completion(.init(items: validItems,
-                                 maxPagesAvailable: result.maxPagesAvailable,
-                                 iiifUrl: result.iiifUrl))
+                await MainActor.run { @Sendable in
+                    for item in result.items {
+                        do {
+                            try provider.store(item: item, autosaving: true)
+                        } catch {
+                            Print.error(error)
+                        }
+                    }
+                    
+                    let persistedItems = try? provider.fetchItems(forPage: page, countLimit: limit)
+                    completion(.init(items: persistedItems ?? [],
+                                     maxPagesAvailable: result.maxPagesAvailable,
+                                     iiifUrl: result.iiifUrl))
+                }
+            } catch {
+                Print.error(error)
             }
         }
     }

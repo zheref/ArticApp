@@ -10,6 +10,8 @@ import Foundation
 extension ArtworksItem {
     
     func imageUrl(usingIIIFUrl iiifUrl: URL) -> URL? {
+        guard let imageId = imageId else { return nil }
+        
         let endpoint = ImagesEndpoint.image(iiifUrl: iiifUrl, imageId: imageId)
         return try? endpoint.createURL()
     }

@@ -68,7 +68,7 @@ final class ArtworksPagination: Decodable {
 final class ArtworksItem: Decodable, Identifiable {
     @Attribute(.unique) var id: Int
     var title: String
-    var imageId: String
+    var imageId: String?
     var dimensions: String?
     var artistTitle: String?
     var themeTitles: [String]
@@ -93,7 +93,7 @@ final class ArtworksItem: Decodable, Identifiable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
-        self.imageId = try container.decode(String.self, forKey: .image_id)
+        self.imageId = try? container.decodeIfPresent(String.self, forKey: .image_id)
         self.dimensions = try? container.decodeIfPresent(String.self, forKey: .dimensions)
         self.artistTitle = try? container.decodeIfPresent(String.self, forKey: .artist_title)
         self.themeTitles = try container.decodeIfPresent([String].self, forKey: .theme_titles) ?? []
