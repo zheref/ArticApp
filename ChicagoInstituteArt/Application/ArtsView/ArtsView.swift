@@ -9,34 +9,31 @@ import SwiftUI
 import SwiftData
 
 struct ArtsView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var artItems: [ArtworksItem]
-    @State private var iiifUrl: URL?
-    @State private var lastFetchedPage = 0
-    
-    let service: ArtServiceProtocol
+    let state: ArtsViewModel
+    let interactor: ArtsInteractorProtocol
     
     private let adaptiveColumn = [
         GridItem(.adaptive(minimum: 150))
     ]
     
-    init(service: ArtServiceProtocol) {
-        self.service = service
+    init(state: ArtsViewModel, interactor: ArtsInteractorProtocol) {
+        self.state = state
+        self.interactor = interactor
     }
     
-    private func url(for item: ArtworksItem) -> URL? {
-        guard let iiifUrl = iiifUrl else { return nil }
-        let endpoint = ImagesEndpoint.image(iiifUrl: iiifUrl, imageId: item.imageId)
-        return try? endpoint.createURL()
+    private func imageUrl(for item: ArtworksItem) -> URL? {
+        guard let iiifUrl = state.iiifUrl else { return nil }
+        return item.imageUrl(usingIIIFUrl: iiifUrl)
     }
 
     var body: some View {
         NavigationSplitView {
             ScrollView {
                 LazyVGrid(columns: adaptiveColumn, spacing: 10, content: {
-                    ForEach(artItems) { item in
+                    ForEach(state.artItems) { item in
                         NavigationLink {
-                            ArtworkView(item: item, iiifUrl: iiifUrl)
+                            let itemInteractor = ArtworkInteractor(item: item)
+                            ArtworkView(item: item, interactor: itemInteractor)
                         } label: {
                             itemCell(forItem: item)
                         }
@@ -47,18 +44,13 @@ struct ArtsView: View {
             .ignoresSafeArea(.keyboard)
             .background(Color.background)
             .navigationTitle("Artic Gallery")
+            .onAppear {
+                 interactor.fetchArtworks()
+            }
         } detail: {
             Text("Select an item")
         }
-        .task {
-            do {
-                let (_, iiifUrl) = try await service.fetchArtworks(page: lastFetchedPage + 1)
-                self.iiifUrl = iiifUrl
-                lastFetchedPage += 1
-            } catch {
-                Print.error(error)
-            }
-        }
+        .environment(\.iiifUrl, state.iiifUrl)
     }
     
     @ViewBuilder
@@ -67,7 +59,7 @@ struct ArtsView: View {
             Spacer()
             VStack() {
                 Spacer()
-                AsyncImage(url: url(for: item)) {
+                AsyncImage(url: imageUrl(for: item)) {
                     $0.image?
                         .resizable()
                         .frame(width: 120, height: 120)
@@ -88,7 +80,24 @@ struct ArtsView: View {
 }
 
 #Preview {
+    let state = ArtsViewModel()
     let service = ArtService(client: .forPreviews)
-    return ArtsView(service: service)
+    let provider = ArtProvider(context: PreviewSampleData.previewSomeItems.mainContext)
+    let interactor = ArtsInteractor(state: state,
+                                    provider: provider,
+                                    service: service)
+    
+    return ArtsView(state: state, interactor: interactor)
             .modelContainer(PreviewSampleData.previewSomeItems)
+}
+
+private struct IIIFUrlKey: EnvironmentKey {
+    static let defaultValue: URL? = nil
+}
+
+extension EnvironmentValues {
+  var iiifUrl: URL? {
+    get { self[IIIFUrlKey.self] }
+    set { self[IIIFUrlKey.self] = newValue }
+  }
 }

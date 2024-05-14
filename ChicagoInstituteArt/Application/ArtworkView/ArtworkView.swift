@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ArtworkView: View {
     let item: ArtworksItem
-    let iiifUrl: URL?
+    let interactor: ArtworkInteractor
+    
+    @Environment(\.iiifUrl) var iiifUrl: URL?
     
     var body: some View {
         VStack {
             ZStack {
-                AsyncImage(url: url(for: item)) {
+                AsyncImage(url: imageUrl(for: item)) {
                     $0.image?.resizable()
                 }
                 VStack {
@@ -49,13 +51,14 @@ struct ArtworkView: View {
         .ignoresSafeArea(.all)
     }
     
-    private func url(for item: ArtworksItem) -> URL? {
+    private func imageUrl(for item: ArtworksItem) -> URL? {
         guard let iiifUrl = iiifUrl else { return nil }
-        let endpoint = ImagesEndpoint.image(iiifUrl: iiifUrl, imageId: item.imageId)
-        return try? endpoint.createURL()
+        return item.imageUrl(usingIIIFUrl: iiifUrl)
     }
 }
 
 #Preview {
-    return ArtworkView(item: .mock, iiifUrl: URL(string: "https://www.artic.edu/iiif/2"))
+    let item: ArtworksItem = .mock
+    let interactor = ArtworkInteractor(item: item)
+    return ArtworkView(item: item, interactor: interactor)
 }

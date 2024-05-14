@@ -36,6 +36,10 @@
 		2B23876B2BEFE77F003FDA5C /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23876A2BEFE77F003FDA5C /* ArtworkView.swift */; };
 		2B23876D2BF161CF003FDA5C /* ModelContainer+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23876C2BF161CF003FDA5C /* ModelContainer+Live.swift */; };
 		2B2387702BF16D71003FDA5C /* ArtsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23876F2BF16D71003FDA5C /* ArtsInteractor.swift */; };
+		2B2387722BF25A7C003FDA5C /* ArtsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387712BF25A7C003FDA5C /* ArtsViewModel.swift */; };
+		2B2387752BF267E6003FDA5C /* ArtworkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387742BF267E6003FDA5C /* ArtworkInteractor.swift */; };
+		2B2387772BF26F83003FDA5C /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387762BF26F83003FDA5C /* ImagesService.swift */; };
+		2B23877C2BF2D7BD003FDA5C /* ArtProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		2B23876A2BEFE77F003FDA5C /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
 		2B23876C2BF161CF003FDA5C /* ModelContainer+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContainer+Live.swift"; sourceTree = "<group>"; };
 		2B23876F2BF16D71003FDA5C /* ArtsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtsInteractor.swift; sourceTree = "<group>"; };
+		2B2387712BF25A7C003FDA5C /* ArtsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtsViewModel.swift; sourceTree = "<group>"; };
+		2B2387742BF267E6003FDA5C /* ArtworkInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkInteractor.swift; sourceTree = "<group>"; };
+		2B2387762BF26F83003FDA5C /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
+		2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,11 +166,9 @@
 		2B05D7172BEA9838003B6EC0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				2B05D71B2BEA991E003B6EC0 /* ArtService.swift */,
-				2B23872F2BEB2402003FDA5C /* Model.swift */,
-				2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */,
-				2B23873E2BEEED5D003FDA5C /* ImagesEndpoint.swift */,
-				2B23876C2BF161CF003FDA5C /* ModelContainer+Live.swift */,
+				2B23877A2BF2D792003FDA5C /* Model */,
+				2B2387792BF2D6C7003FDA5C /* Local */,
+				2B2387782BF2D69A003FDA5C /* Network */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -171,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				2B23876E2BF16D5A003FDA5C /* ArtsView */,
-				2B23876A2BEFE77F003FDA5C /* ArtworkView.swift */,
+				2B2387732BF267D1003FDA5C /* ArtworkView */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -233,8 +239,46 @@
 			children = (
 				2B05D7082BEA9813003B6EC0 /* ArtsView.swift */,
 				2B23876F2BF16D71003FDA5C /* ArtsInteractor.swift */,
+				2B2387712BF25A7C003FDA5C /* ArtsViewModel.swift */,
 			);
 			path = ArtsView;
+			sourceTree = "<group>";
+		};
+		2B2387732BF267D1003FDA5C /* ArtworkView */ = {
+			isa = PBXGroup;
+			children = (
+				2B23876A2BEFE77F003FDA5C /* ArtworkView.swift */,
+				2B2387742BF267E6003FDA5C /* ArtworkInteractor.swift */,
+			);
+			path = ArtworkView;
+			sourceTree = "<group>";
+		};
+		2B2387782BF2D69A003FDA5C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2B2387362BEC250D003FDA5C /* ArtEndpoint.swift */,
+				2B05D71B2BEA991E003B6EC0 /* ArtService.swift */,
+				2B23873E2BEEED5D003FDA5C /* ImagesEndpoint.swift */,
+				2B2387762BF26F83003FDA5C /* ImagesService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2B2387792BF2D6C7003FDA5C /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				2B23876C2BF161CF003FDA5C /* ModelContainer+Live.swift */,
+				2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		2B23877A2BF2D792003FDA5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2B23872F2BEB2402003FDA5C /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,10 +394,13 @@
 				2B05D7092BEA9813003B6EC0 /* ArtsView.swift in Sources */,
 				2B2387702BF16D71003FDA5C /* ArtsInteractor.swift in Sources */,
 				2B23873F2BEEED5D003FDA5C /* ImagesEndpoint.swift in Sources */,
+				2B2387752BF267E6003FDA5C /* ArtworkInteractor.swift in Sources */,
 				2B2387352BEC012C003FDA5C /* Resources.swift in Sources */,
+				2B2387722BF25A7C003FDA5C /* ArtsViewModel.swift in Sources */,
 				2B2387652BEFE0BD003FDA5C /* Font+Extensions .swift in Sources */,
 				2B05D7072BEA9813003B6EC0 /* ChicagoInstituteArtApp.swift in Sources */,
 				2B2387372BEC250D003FDA5C /* ArtEndpoint.swift in Sources */,
+				2B2387772BF26F83003FDA5C /* ImagesService.swift in Sources */,
 				2B2387302BEB2402003FDA5C /* Model.swift in Sources */,
 				2B05D71A2BEA9859003B6EC0 /* REST.swift in Sources */,
 				2B23876B2BEFE77F003FDA5C /* ArtworkView.swift in Sources */,
@@ -361,6 +408,7 @@
 				2B2387392BEC3274003FDA5C /* Print.swift in Sources */,
 				2B23873B2BEC390C003FDA5C /* Serialization.swift in Sources */,
 				2B23873D2BEC3D38003FDA5C /* UIKitExtensions.swift in Sources */,
+				2B23877C2BF2D7BD003FDA5C /* ArtProvider.swift in Sources */,
 				2B05D71C2BEA991E003B6EC0 /* ArtService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

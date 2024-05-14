@@ -43,3 +43,9 @@ enum ImagesEndpoint: REST.Endpoint {
     var headers: [String : String]? { [:] }
     
 }
+
+#if DEBUG
+extension URL {
+    static var iiifMock: URL? { URL(string: "https://www.artic.edu/iiif/2") }
+}
+#endif
