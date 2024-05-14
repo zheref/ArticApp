@@ -113,6 +113,19 @@ extension ArtworksItem {
               themeTitles: ["Essentials"],
               creditLine: "Purchased with funds provided by Mrs. James W. Alsdorf and Mrs. Leonard S. Florsheim, Jr.")
     }
+    
+    static var mock2: ArtworksItem {
+        let item = ArtworksItem(id: 2,
+              title: "Man's Shoulder Bag",
+              imageId: "61edb26e-4265-7409-9d9b-ce54023fbcc0",
+              dimensions: "80.7 × 28.8 × 1 cm (31 3/4 × 11 5/16 × 3/8 in.); With fringe: H.: 92.4 cm (36 7/16 in.)",
+              artistTitle: "Winnebago",
+              themeTitles: [],
+              creditLine: "Purchased with funds provided by Mrs. James W. Alsdorf and Mrs. Leonard S. Florsheim, Jr."
+        )
+        item.isFavorite = true
+        return item
+    }
 }
 
 #endif

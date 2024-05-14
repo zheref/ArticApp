@@ -32,8 +32,8 @@ struct ArtsView: View {
                 LazyVGrid(columns: adaptiveColumn, spacing: 10, content: {
                     ForEach(state.artItems) { item in
                         NavigationLink {
-                            let itemInteractor = ArtworkInteractor(item: item)
-                            ArtworkView(item: item, interactor: itemInteractor)
+                            let (item, interactor) = interactor.navigateTo(item: item)
+                            ArtworkView(item: item, interactor: interactor)
                         } label: {
                             itemCell(forItem: item)
                         }
@@ -62,14 +62,24 @@ struct ArtsView: View {
             Spacer()
             VStack() {
                 Spacer()
-                AsyncImage(url: imageUrl(for: item)) {
-                    $0.resizable()
-                      .frame(width: 120, height: 120)
-                      .clipShape(RoundedRectangle(cornerRadius: 10))
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 120, height: 120)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                HStack(alignment: .top) {
+                    Spacer(minLength: 11)
+                    AsyncImage(url: imageUrl(for: item)) {
+                        $0.resizable()
+                          .frame(width: 120, height: 120)
+                          .clipShape(RoundedRectangle(cornerRadius: 10))
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 120, height: 120)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    if item.isFavorite {
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .frame(width: 11, height: 10)
+                            .foregroundStyle(Color.pink)
+                            .padding(.top, 5)
+                    } else { Spacer(minLength: 11) }
                 }
                 Spacer(minLength: 10)
                 Text(item.title)

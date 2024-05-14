@@ -12,6 +12,7 @@ import Combine
 protocol ArtsInteractorProtocol {
     func fetchArtworks()
     func fetchMoreIfNeeded(asItemShows item: ArtworksItem)
+    func navigateTo(item: ArtworksItem) -> (ArtworksItem, ArtworkInteractorProtocol)
 }
 
 final class ArtsInteractor {
@@ -160,6 +161,13 @@ extension ArtsInteractor: ArtsInteractorProtocol {
                 }
             }
             .store(in: &bag)
+    }
+    
+    func navigateTo(item: ArtworksItem) -> (ArtworksItem, ArtworkInteractorProtocol) {
+        return (
+            item: item,
+            interactor: ArtworkInteractor(item: item, provider: provider)
+        )
     }
     
 }

@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ArtworkView: View {
-    let item: ArtworksItem
-    let interactor: ArtworkInteractor
+    @State var item: ArtworksItem
+    let interactor: ArtworkInteractorProtocol
     
     @Environment(\.iiifUrl) var iiifUrl: URL?
     
@@ -19,6 +20,7 @@ struct ArtworkView: View {
                 AsyncImage(url: imageUrl(for: item)) {
                     $0.image?.resizable()
                 }
+                .ignoresSafeArea(.all)
                 VStack {
                     Spacer()
                     HStack {
@@ -47,8 +49,19 @@ struct ArtworkView: View {
                 }
                 .padding()
             }
+            .ignoresSafeArea(.all)
         }
-        .ignoresSafeArea(.all)
+        .toolbar {
+            Button(action: {
+                interactor.toggleFavorite()
+            }, label: {
+                Image(systemName: item.isFavorite ? "heart.fill" : "heart")
+                    .resizable()
+                    .foregroundStyle(item.isFavorite ? Color.pink : Color.white)
+                    .frame(width: 22, height: 20)
+            })
+            .frame(width: 50, height: 50)
+        }
     }
     
     private func imageUrl(for item: ArtworksItem) -> URL? {
@@ -58,7 +71,13 @@ struct ArtworkView: View {
 }
 
 #Preview {
-    let item: ArtworksItem = .mock
-    let interactor = ArtworkInteractor(item: item)
-    return ArtworkView(item: item, interactor: interactor)
+    let container = PreviewSampleData.previewSomeItems
+    let firstItem: ArtworksItem! = container.firstInstance()
+    let provider = ArtProvider(context: container.mainContext)
+    let interactor = ArtworkInteractor(item: firstItem, provider: provider)
+    return NavigationStack {
+        ArtworkView(item: firstItem, interactor: interactor)
+            .modelContainer(PreviewSampleData.previewSomeItems)
+            .environment(\.iiifUrl, .iiifMock)
+    }
 }

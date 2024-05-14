@@ -40,6 +40,7 @@
 		2B2387752BF267E6003FDA5C /* ArtworkInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387742BF267E6003FDA5C /* ArtworkInteractor.swift */; };
 		2B2387772BF26F83003FDA5C /* ImagesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387762BF26F83003FDA5C /* ImagesService.swift */; };
 		2B23877C2BF2D7BD003FDA5C /* ArtProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */; };
+		2B23877E2BF3DD97003FDA5C /* DevHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23877D2BF3DD97003FDA5C /* DevHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		2B2387742BF267E6003FDA5C /* ArtworkInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkInteractor.swift; sourceTree = "<group>"; };
 		2B2387762BF26F83003FDA5C /* ImagesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesService.swift; sourceTree = "<group>"; };
 		2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtProvider.swift; sourceTree = "<group>"; };
+		2B23877D2BF3DD97003FDA5C /* DevHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 			children = (
 				2B23876C2BF161CF003FDA5C /* ModelContainer+Live.swift */,
 				2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */,
+				2B23877D2BF3DD97003FDA5C /* DevHelpers.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				2B2387302BEB2402003FDA5C /* Model.swift in Sources */,
 				2B05D71A2BEA9859003B6EC0 /* REST.swift in Sources */,
 				2B23876B2BEFE77F003FDA5C /* ArtworkView.swift in Sources */,
+				2B23877E2BF3DD97003FDA5C /* DevHelpers.swift in Sources */,
 				2B23876D2BF161CF003FDA5C /* ModelContainer+Live.swift in Sources */,
 				2B2387392BEC3274003FDA5C /* Print.swift in Sources */,
 				2B23873B2BEC390C003FDA5C /* Serialization.swift in Sources */,
