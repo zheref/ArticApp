@@ -155,6 +155,8 @@ extension ArtsInteractor: ArtsInteractorProtocol {
                 }
             } receiveValue: { [weak self] result in
                 self?.state.artItems.append(contentsOf: result.items)
+                self?.state.animationAmount = 2.0
+                
                 self?.state.iiifUrl = result.iiifUrl
                 if let maxPagesAvailable = result.maxPagesAvailable {
                     self?.state.maxPagesAvailable = maxPagesAvailable

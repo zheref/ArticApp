@@ -36,6 +36,14 @@ struct ArtsView: View {
                             ArtworkView(item: item, interactor: interactor)
                         } label: {
                             itemCell(forItem: item)
+                                .opacity(2 - state.animationAmount)
+                                .animation(
+                                    .easeIn(duration: 1),
+                                    value: state.animationAmount
+                                )
+                                .onAppear(perform: {
+                                    state.animationAmount = 1
+                                })
                         }
                         .onAppear {
                             interactor.fetchMoreIfNeeded(asItemShows: item)
@@ -92,6 +100,14 @@ struct ArtsView: View {
         .padding(5)
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        
+//        .scaleEffect(item.isAnimating ? 0.5 : 1)
+//        .transition(.move(edge: .trailing))
+//        .onAppear { item.isAnimating.toggle() }
+//        .opacity(item.isAnimating ? 0 : 1)
+//        .animation(.linear(duration: 1), value: item.isAnimating)
+//        .scaleEffect(0.5)
+        
     }
 }
 
