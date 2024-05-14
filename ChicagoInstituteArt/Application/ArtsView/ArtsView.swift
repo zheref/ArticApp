@@ -56,7 +56,7 @@ struct ArtsView: View {
             .background(Color.background)
             .navigationTitle("Artic Gallery")
             .onAppear {
-                 interactor.fetchArtworks()
+                 interactor.viewDidLoad()
             }
         } detail: {
             Text("Select an item")

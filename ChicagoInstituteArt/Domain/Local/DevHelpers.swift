@@ -18,7 +18,7 @@ actor PreviewSampleData {
         container.mainContext.autosaveEnabled = false
         container.mainContext.insert(ArtworksItem.mock)
         container.mainContext.insert(ArtworksItem.mock2)
-
+        container.mainContext.insert(ArtworksItem.mock3)
         return container
     }()
     

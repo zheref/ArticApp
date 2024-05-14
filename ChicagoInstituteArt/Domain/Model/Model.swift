@@ -126,6 +126,16 @@ extension ArtworksItem {
         item.isFavorite = true
         return item
     }
+    
+    static var mock3: ArtworksItem {
+        return .init(id: 3,
+                     title: "Personal Commissions: “Demi seeks Ashton Kutcher. Very attr single white Female 44 seeks tall attr responsible honest sexy sweet & financially stable younger man, 25-35 for possible relationship. Ext#7449”",
+                     imageId: "0c839d9f-7d07-a860-4564-d31881a7951b",
+                     dimensions: "Image: 47.6 × 36.7 cm (18 3/4 × 14 1/2 in.); Paper: 50.1 × 36.7 cm (19 3/4 × 14 1/2 in.); Mount, sight: 56.1 × 42 cm (22 1/8 × 16 9/16 in.); Frame: 58.5 × 44.4 × 3.8 cm (23 1/16 × 17 1/2 × 1 1/2 in.)",
+                     artistTitle: "Leigh Ledare",
+                     themeTitles: [],
+                     creditLine: "Photography Associates Fund")
+    }
 }
 
 #endif

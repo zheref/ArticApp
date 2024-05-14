@@ -10,6 +10,7 @@ import SwiftData
 import Combine
 
 protocol ArtsInteractorProtocol {
+    func viewDidLoad()
     func fetchArtworks()
     func fetchMoreIfNeeded(asItemShows item: ArtworksItem)
     func navigateTo(item: ArtworksItem) -> (ArtworksItem, ArtworkInteractorProtocol)
@@ -137,6 +138,11 @@ extension ArtsInteractor: ArtsInteractorProtocol {
             return
         }
         
+        fetchArtworks()
+    }
+    
+    func viewDidLoad() {
+        guard state.artItems.isEmpty else { return }
         fetchArtworks()
     }
     
