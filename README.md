@@ -17,9 +17,9 @@ This iOS mobile codebase features:
 - Mocks for network and database data available only in development mode for the sake of previews **D**esign **D**riven **D**evelopment.
 
 ## Upcoming tasks
-[ ] Add proper unit tests for main artifacts
-[ ] Add some integration tests
-[ ] Add snapshot tests
-[ ] Enable main carousel on main screen for displaying favorites
-[ ] Allowing to download images to FS to provide availability while offline
-[ ] Enable users to see the piece of art in full screen.
+[ ] Add proper unit tests for main artifacts  
+[ ] Add some integration tests  
+[ ] Add snapshot tests  
+[ ] Enable main carousel on main screen for displaying favorites  
+[ ] Allowing to download images to FS to provide availability while offline  
+[ ] Enable users to see the piece of art in full screen  
