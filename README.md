@@ -4,8 +4,8 @@ Mobile app portraying content from Chicago Art Institute API:
 https://api.artic.edu/docs
 
 ## Screenshots
-<img src="https://github.com/zheref/ArticApp/assets/1177000/37f8ff59-5a1e-42fc-af29-02875e925ead" width="100">
-<img src="https://github.com/zheref/ArticApp/assets/1177000/171cabb7-3097-4574-b2ec-8cc61a2aeee8" width="100">
+<img src="https://github.com/zheref/ArticApp/assets/1177000/37f8ff59-5a1e-42fc-af29-02875e925ead" width="200">
+<img src="https://github.com/zheref/ArticApp/assets/1177000/171cabb7-3097-4574-b2ec-8cc61a2aeee8" width="200">
 
 ## Summary
 This iOS mobile codebase features:
