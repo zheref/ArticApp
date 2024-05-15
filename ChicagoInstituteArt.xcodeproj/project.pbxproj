@@ -94,6 +94,7 @@
 		2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtProvider.swift; sourceTree = "<group>"; };
 		2B23877D2BF3DD97003FDA5C /* DevHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevHelpers.swift; sourceTree = "<group>"; };
 		2B23877F2BF403C2003FDA5C /* SwiftUI+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Helpers.swift"; sourceTree = "<group>"; };
+		2B2387812BF572FD003FDA5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +118,7 @@
 		2B05D6FA2BEA9813003B6EC0 = {
 			isa = PBXGroup;
 			children = (
+				2B2387812BF572FD003FDA5C /* README.md */,
 				2B05D7052BEA9813003B6EC0 /* ChicagoInstituteArt */,
 				2B2387452BEFD1DD003FDA5C /* ChicagoInstituteArtTests */,
 				2B05D7042BEA9813003B6EC0 /* Products */,
