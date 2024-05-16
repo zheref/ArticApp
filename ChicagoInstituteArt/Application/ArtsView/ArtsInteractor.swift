@@ -33,6 +33,7 @@ class ArtsInteractor {
     }
     
     /// Fetches artworks for incoming page
+    @discardableResult
     func fetchArtworks() -> Future<ArtsResult, Error> {
         Print.debug("Requesting more artworks to data sources...")
         let future = next()
