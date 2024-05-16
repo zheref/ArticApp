@@ -11,12 +11,11 @@ import Combine
 
 protocol ArtsInteractorProtocol {
     func viewDidLoad()
-    func fetchArtworks()
     func fetchMoreIfNeeded(asItemShows item: ArtworksItem)
     func navigateTo(item: ArtworksItem) -> (ArtworksItem, ArtworkInteractorProtocol)
 }
 
-final class ArtsInteractor {
+class ArtsInteractor {
     static let lastIIIfUrlKey = "lastIIIfUrlKey"
     let batchLimit: Int
     
@@ -31,6 +30,35 @@ final class ArtsInteractor {
         self.provider = provider
         self.service = service
         self.batchLimit = batchLimit
+    }
+    
+    /// Fetches artworks for incoming page
+    func fetchArtworks() -> Future<ArtsResult, Error> {
+        Print.debug("Requesting more artworks to data sources...")
+        let future = next()
+        
+        future
+            .receive(on: RunLoop.main)
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure(let error):
+                    self?.handle(error: error)
+                case .finished:
+                    self?.state.lastFetchedPage += 1
+                    self?.preloadItemsIfNeeded()
+                }
+            } receiveValue: { [weak self] result in
+                self?.state.artItems.append(contentsOf: result.items)
+                self?.state.animationAmount = 2.0
+                
+                self?.state.iiifUrl = result.iiifUrl
+                if let maxPagesAvailable = result.maxPagesAvailable {
+                    self?.state.maxPagesAvailable = maxPagesAvailable
+                }
+            }
+            .store(in: &bag)
+        
+        return future
     }
     
     private func preloadItemsIfNeeded() {
@@ -91,22 +119,27 @@ final class ArtsInteractor {
     
     private func download(page: Int, upTo limit: Int, completion: @escaping (ArtsResult) -> Void) {
         Print.debug("Retrieving page \(page) from network")
-        Task { [unowned self] in
+        Task { [weak self] in
+            guard let self = self else {
+                completion(.none)
+                return
+            }
             do {
                 let result = try await self.service.fetchArtworks(page: page, countLimit: limit)
                 if let iiifUrlString = result.iiifUrl?.absoluteString {
                     self.provider.storeValue(Self.lastIIIfUrlKey, iiifUrlString)
                 }
-                await MainActor.run { @Sendable in
+                await MainActor.run {
                     for item in result.items {
                         do {
-                            try provider.store(item: item, autosaving: true)
+                            try self.provider.store(item: item, autosaving: true)
                         } catch {
                             Print.error(error)
+                            completion(.none)
                         }
                     }
                     
-                    let persistedItems = try? provider.fetchItems(forPage: page, countLimit: limit)
+                    let persistedItems = try? self.provider.fetchItems(forPage: page, countLimit: limit)
                     completion(.init(items: persistedItems ?? [],
                                      maxPagesAvailable: result.maxPagesAvailable,
                                      iiifUrl: result.iiifUrl))
@@ -144,31 +177,6 @@ extension ArtsInteractor: ArtsInteractorProtocol {
     func viewDidLoad() {
         guard state.artItems.isEmpty else { return }
         fetchArtworks()
-    }
-    
-    /// Fetches artworks for incoming page
-    func fetchArtworks() {
-        Print.debug("Requesting more artworks to data sources...")
-        next()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] completion in
-                switch completion {
-                case .failure(let error):
-                    self?.handle(error: error)
-                case .finished:
-                    self?.state.lastFetchedPage += 1
-                    self?.preloadItemsIfNeeded()
-                }
-            } receiveValue: { [weak self] result in
-                self?.state.artItems.append(contentsOf: result.items)
-                self?.state.animationAmount = 2.0
-                
-                self?.state.iiifUrl = result.iiifUrl
-                if let maxPagesAvailable = result.maxPagesAvailable {
-                    self?.state.maxPagesAvailable = maxPagesAvailable
-                }
-            }
-            .store(in: &bag)
     }
     
     func navigateTo(item: ArtworksItem) -> (ArtworksItem, ArtworkInteractorProtocol) {
