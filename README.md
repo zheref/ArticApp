@@ -20,8 +20,8 @@ This iOS mobile codebase features:
 - Added unit tests for services.
 
 ## Upcoming tasks
-* Add some integration tests  
-* Add snapshot tests  
 * Enable main carousel on main screen for displaying favorites  
-* Allowing to download images to FS to provide availability while offline  
+* Add more details to artwork screen  
+* Add snapshot tests  
+* Allowing to download images to FS to provide availability while offline      
 * Enable users to see the piece of art in full screen  
