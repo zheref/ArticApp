@@ -18,17 +18,21 @@ struct ArtsResult {
     }
 }
 
-struct ArtworksResponseBody: Decodable {
+struct ArtworksResponseBody: Codable {
     var pagination: ArtworksPagination
     var data: [ArtworksItem]
     var config: ArtworksConfig
 }
 
-struct ArtworksConfig: Decodable {
+struct ArtworksConfig: Codable {
     var iiifUrl: URL?
     
     enum CodingKeys: CodingKey {
         case iiif_url
+    }
+    
+    init(iiifUrl: URL? = nil) {
+        self.iiifUrl = iiifUrl
     }
     
     init(from decoder: any Decoder) throws {
@@ -36,9 +40,14 @@ struct ArtworksConfig: Decodable {
         let iiifUrlString = try container.decode(String.self, forKey: .iiif_url)
         self.iiifUrl = URL(string: iiifUrlString)
     }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(iiifUrl, forKey: .iiif_url)
+    }
 }
 
-final class ArtworksPagination: Decodable {
+final class ArtworksPagination: Codable {
     var total: Int
     var limit: Int
     var totalPages: Int
@@ -62,10 +71,18 @@ final class ArtworksPagination: Decodable {
         self.totalPages = try container.decode(Int.self, forKey: .total_pages)
         self.currentPage = try container.decode(Int.self, forKey: .current_page)
     }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(total, forKey: .total)
+        try container.encode(limit, forKey: .limit)
+        try container.encode(totalPages, forKey: .total_pages)
+        try container.encode(currentPage, forKey: .current_page)
+    }
 }
 
 @Model
-final class ArtworksItem: Decodable, Identifiable {
+final class ArtworksItem: Codable, Identifiable {
     @Attribute(.unique) var id: Int
     var title: String
     var imageId: String?
@@ -75,7 +92,7 @@ final class ArtworksItem: Decodable, Identifiable {
     var creditLine: String?
     var isFavorite = false
     
-    init(id: Int, title: String, imageId: String, dimensions: String, artistTitle: String, themeTitles: [String], creditLine: String?) {
+    init(id: Int, title: String, imageId: String?, dimensions: String, artistTitle: String, themeTitles: [String], creditLine: String?) {
         self.id = id
         self.title = title
         self.imageId = imageId
@@ -98,6 +115,17 @@ final class ArtworksItem: Decodable, Identifiable {
         self.artistTitle = try? container.decodeIfPresent(String.self, forKey: .artist_title)
         self.themeTitles = try container.decodeIfPresent([String].self, forKey: .theme_titles) ?? []
         self.creditLine = try? container.decodeIfPresent(String.self, forKey: .credit_line)
+    }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(imageId, forKey: .image_id)
+        try container.encode(dimensions, forKey: .dimensions)
+        try container.encode(artistTitle, forKey: .artist_title)
+        try container.encode(themeTitles, forKey: .theme_titles)
+        try container.encode(creditLine, forKey: .credit_line)
     }
 }
 
@@ -131,6 +159,16 @@ extension ArtworksItem {
         return .init(id: 3,
                      title: "Personal Commissions: “Demi seeks Ashton Kutcher. Very attr single white Female 44 seeks tall attr responsible honest sexy sweet & financially stable younger man, 25-35 for possible relationship. Ext#7449”",
                      imageId: "0c839d9f-7d07-a860-4564-d31881a7951b",
+                     dimensions: "Image: 47.6 × 36.7 cm (18 3/4 × 14 1/2 in.); Paper: 50.1 × 36.7 cm (19 3/4 × 14 1/2 in.); Mount, sight: 56.1 × 42 cm (22 1/8 × 16 9/16 in.); Frame: 58.5 × 44.4 × 3.8 cm (23 1/16 × 17 1/2 × 1 1/2 in.)",
+                     artistTitle: "Leigh Ledare",
+                     themeTitles: [],
+                     creditLine: "Photography Associates Fund")
+    }
+    
+    static var mockWithNoImage: ArtworksItem {
+        return .init(id: 3,
+                     title: "Personal Commissions: “Demi seeks Ashton Kutcher. Very attr single white Female 44 seeks tall attr responsible honest sexy sweet & financially stable younger man, 25-35 for possible relationship. Ext#7449”",
+                     imageId: nil,
                      dimensions: "Image: 47.6 × 36.7 cm (18 3/4 × 14 1/2 in.); Paper: 50.1 × 36.7 cm (19 3/4 × 14 1/2 in.); Mount, sight: 56.1 × 42 cm (22 1/8 × 16 9/16 in.); Frame: 58.5 × 44.4 × 3.8 cm (23 1/16 × 17 1/2 × 1 1/2 in.)",
                      artistTitle: "Leigh Ledare",
                      themeTitles: [],

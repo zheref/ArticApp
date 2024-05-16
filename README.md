@@ -9,15 +9,18 @@ https://api.artic.edu/docs
 
 ## Summary
 This iOS mobile codebase features:
-- Heavy usage of SwiftUI and SwiftData.
+- Heavy usage of SwiftUI, Combine, Concurrency and SwiftData.
+- Nice way of encapsulating concept and creation of REST API endpoints.  
 - Separation of view states onto a ViewModel for better testability and responsibility isolation.
 - Standard architecture following a single responsiblity principle.
 - Decoupling and dependency injection between artifacts to enhance testability.
 - Isolation of domain agnostic logic allowing artifacts to be reused across codebases.
 - Mocks for network and database data available only in development mode for the sake of previews **D**esign **D**riven **D**evelopment.
+- JSON Serializable SwiftData-ready PersistentModels to avoid duplication of entities across the app.
+- Added unit tests for services.
 
 ## Upcoming tasks
-[ ] Add proper unit tests for main artifacts  
+[ ] Add proper unit tests for interactors  
 [ ] Add some integration tests  
 [ ] Add snapshot tests  
 [ ] Enable main carousel on main screen for displaying favorites  

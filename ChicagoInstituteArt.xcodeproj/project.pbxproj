@@ -42,6 +42,8 @@
 		2B23877C2BF2D7BD003FDA5C /* ArtProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23877B2BF2D7BD003FDA5C /* ArtProvider.swift */; };
 		2B23877E2BF3DD97003FDA5C /* DevHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23877D2BF3DD97003FDA5C /* DevHelpers.swift */; };
 		2B2387802BF403C2003FDA5C /* SwiftUI+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B23877F2BF403C2003FDA5C /* SwiftUI+Helpers.swift */; };
+		2B2387842BF57C34003FDA5C /* ArtServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387832BF57C34003FDA5C /* ArtServiceTests.swift */; };
+		2B2387872BF658D6003FDA5C /* ImagesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2387862BF658D6003FDA5C /* ImagesServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +97,8 @@
 		2B23877D2BF3DD97003FDA5C /* DevHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevHelpers.swift; sourceTree = "<group>"; };
 		2B23877F2BF403C2003FDA5C /* SwiftUI+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Helpers.swift"; sourceTree = "<group>"; };
 		2B2387812BF572FD003FDA5C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		2B2387832BF57C34003FDA5C /* ArtServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtServiceTests.swift; sourceTree = "<group>"; };
+		2B2387862BF658D6003FDA5C /* ImagesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +208,7 @@
 			children = (
 				2B2387682BEFE173003FDA5C /* Info.plist */,
 				2B2387462BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift */,
+				2B2387822BF57B72003FDA5C /* Domain */,
 				2B23874D2BEFD1EC003FDA5C /* Library */,
 			);
 			path = ChicagoInstituteArtTests;
@@ -287,6 +292,23 @@
 				2B23872F2BEB2402003FDA5C /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2B2387822BF57B72003FDA5C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				2B2387852BF57C37003FDA5C /* Network */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		2B2387852BF57C37003FDA5C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2B2387832BF57C34003FDA5C /* ArtServiceTests.swift */,
+				2B2387862BF658D6003FDA5C /* ImagesServiceTests.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +449,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B2387872BF658D6003FDA5C /* ImagesServiceTests.swift in Sources */,
+				2B2387842BF57C34003FDA5C /* ArtServiceTests.swift in Sources */,
 				2B2387472BEFD1DD003FDA5C /* ChicagoInstituteArtTests.swift in Sources */,
 				2B23874F2BEFD1FB003FDA5C /* RESTTests.swift in Sources */,
 			);
